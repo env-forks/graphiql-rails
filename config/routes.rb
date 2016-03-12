@@ -1,3 +1,3 @@
-GraphiQL::Rails::Engine.routes.draw do
+Graphiql::Rails::Engine.routes.draw do
   get "/" => "editors#show"
 end

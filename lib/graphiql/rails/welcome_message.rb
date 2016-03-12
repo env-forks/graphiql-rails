@@ -1,9 +1,9 @@
-module GraphiQL
+module Graphiql
   module Rails
     WELCOME_MESSAGE = %|
-# Welcome to GraphiQL
+# Welcome to Graphiql
 #
-# GraphiQL is an in-browser IDE for writing, validating, and
+# Graphiql is an in-browser IDE for writing, validating, and
 # testing GraphQL queries.
 #
 # Type queries into this side of the screen, and you will

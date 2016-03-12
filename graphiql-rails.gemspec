@@ -4,10 +4,10 @@ require "graphiql/rails/version"
 
 Gem::Specification.new do |s|
   s.name        = 'graphiql-rails'
-  s.version     = GraphiQL::Rails::VERSION
+  s.version     = Graphiql::Rails::VERSION
   s.date        = Date.today.to_s
-  s.summary     = "A mountable GraphiQL endpoint for Rails"
-  s.description = "Use the GraphiQL IDE for GraphQL with Ruby on Rails. This gem includes an engine, a controller and a view for integrating GraphiQL with your app."
+  s.summary     = "A mountable Graphiql endpoint for Rails"
+  s.description = "Use the Graphiql IDE for GraphQL with Ruby on Rails. This gem includes an engine, a controller and a view for integrating Graphiql with your app."
   s.homepage    = 'http://github.com/rmosolgo/graphiql-rails'
   s.authors     = ["Robert Mosolgo"]
   s.email       = ['rdmosolgo@gmail.com']

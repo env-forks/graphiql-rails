@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.GraphiQL = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Graphiql = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
  *  Copyright (c) 2015, Facebook, Inc.
  *  All rights reserved.
@@ -1012,9 +1012,9 @@ var _utilityElementPosition = require('../utility/elementPosition');
 var _utilityIntrospectionQueries = require('../utility/introspectionQueries');
 
 /**
- * GraphiQL
+ * Graphiql
  *
- * This React component is responsible for rendering the GraphiQL editor.
+ * This React component is responsible for rendering the Graphiql editor.
  *
  * Props:
  *
@@ -1022,7 +1022,7 @@ var _utilityIntrospectionQueries = require('../utility/introspectionQueries');
  *     a Promise which resolves to the GraphQL parsed JSON response.
  *
  *   - schema: a GraphQLSchema instance or `null` if one is not to be used.
- *     If `undefined` is provided, GraphiQL will send an introspection query
+ *     If `undefined` is provided, Graphiql will send an introspection query
  *     using the fetcher to produce a schema.
  *
  *   - query: an optional GraphQL string to use as the initial displayed query,
@@ -1037,12 +1037,12 @@ var _utilityIntrospectionQueries = require('../utility/introspectionQueries');
  *     response. If not provided, no response will be initialy shown. You might
  *     provide this if illustrating the result of the initial query.
  *
- *   - storage: an instance of [Storage][] GraphiQL will use to persist state.
+ *   - storage: an instance of [Storage][] Graphiql will use to persist state.
  *     Only `getItem` and `setItem` are called. Default: window.localStorage
  *
  *   - defaultQuery: an optional GraphQL string to use when no query is provided
  *     and no stored query exists from a previous session. If `undefined` is
- *     provided, GraphiQL will use its own default query.
+ *     provided, Graphiql will use its own default query.
  *
  *   - onEditQuery: an optional function which will be called when the Query
  *     editor changes. The argument to the function will be the query string.
@@ -1058,18 +1058,18 @@ var _utilityIntrospectionQueries = require('../utility/introspectionQueries');
  *
  * Children:
  *
- *   - <GraphiQL.Logo> Replace the GraphiQL logo with your own.
+ *   - <Graphiql.Logo> Replace the Graphiql logo with your own.
  *
- *   - <GraphiQL.Toolbar> Add a custom toolbar above GraphiQL.
+ *   - <Graphiql.Toolbar> Add a custom toolbar above Graphiql.
  *
- *   - <GraphiQL.Footer> Add a custom footer below GraphiQL Results.
+ *   - <Graphiql.Footer> Add a custom footer below Graphiql Results.
  *
  *
  * [Storage]: https://developer.mozilla.org/en-US/docs/Web/API/Storage
  */
 
-var GraphiQL = (function (_React$Component) {
-  _inherits(GraphiQL, _React$Component);
+var Graphiql = (function (_React$Component) {
+  _inherits(Graphiql, _React$Component);
 
   /**
    * Inspect the query, automatically filling in selection sets for non-leaf
@@ -1078,7 +1078,7 @@ var GraphiQL = (function (_React$Component) {
    * @public
    */
 
-  GraphiQL.prototype.autoCompleteLeafs = function autoCompleteLeafs() {
+  Graphiql.prototype.autoCompleteLeafs = function autoCompleteLeafs() {
     var _fillLeafs = _utilityFillLeafs.fillLeafs(this.state.schema, this.state.query, this.props.getDefaultFieldNames);
 
     var insertions = _fillLeafs.insertions;
@@ -1124,7 +1124,7 @@ var GraphiQL = (function (_React$Component) {
 
   // Lifecycle
 
-  _createClass(GraphiQL, null, [{
+  _createClass(Graphiql, null, [{
     key: 'propTypes',
     value: {
       fetcher: _react.PropTypes.func.isRequired,
@@ -1144,10 +1144,10 @@ var GraphiQL = (function (_React$Component) {
     enumerable: true
   }]);
 
-  function GraphiQL(props) {
+  function Graphiql(props) {
     var _this = this;
 
-    _classCallCheck(this, GraphiQL);
+    _classCallCheck(this, Graphiql);
 
     _React$Component.call(this, props);
 
@@ -1376,7 +1376,7 @@ var GraphiQL = (function (_React$Component) {
     };
 
     if (typeof props.fetcher !== 'function') {
-      throw new TypeError('GraphiQL requires a fetcher function.');
+      throw new TypeError('Graphiql requires a fetcher function.');
     }
 
     // Cache the storage instance
@@ -1406,9 +1406,9 @@ var GraphiQL = (function (_React$Component) {
     this._editorQueryID = 0;
   }
 
-  // Configure the UI by providing this Component as a child of GraphiQL.
+  // Configure the UI by providing this Component as a child of Graphiql.
 
-  GraphiQL.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+  Graphiql.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     var nextSchema = this.state.schema;
     var nextQuery = this.state.query;
     var nextVariables = this.state.variables;
@@ -1433,7 +1433,7 @@ var GraphiQL = (function (_React$Component) {
     });
   };
 
-  GraphiQL.prototype.componentDidMount = function componentDidMount() {
+  Graphiql.prototype.componentDidMount = function componentDidMount() {
     var _this2 = this;
 
     // If there is no schema provided via props, fetch one using introspection.
@@ -1465,7 +1465,7 @@ var GraphiQL = (function (_React$Component) {
     });
   };
 
-  GraphiQL.prototype.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+  Graphiql.prototype.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
     // When UI-altering state changes, simulate a window resize event so all
     // CodeMirror instances become properly rendered.
     if (this.state.variableEditorOpen !== prevState.variableEditorOpen || this.state.variableEditorHeight !== prevState.variableEditorHeight) {
@@ -1473,21 +1473,21 @@ var GraphiQL = (function (_React$Component) {
     }
   };
 
-  GraphiQL.prototype.render = function render() {
+  Graphiql.prototype.render = function render() {
     var children = [];
     _react2['default'].Children.forEach(this.props.children, function (child) {
       children.push(child);
     });
 
     var logo = _graphqlJsutilsFind2['default'](children, function (child) {
-      return child.type === GraphiQL.Logo;
-    }) || _react2['default'].createElement(GraphiQL.Logo, null);
+      return child.type === Graphiql.Logo;
+    }) || _react2['default'].createElement(Graphiql.Logo, null);
 
     var toolbar = _graphqlJsutilsFind2['default'](children, function (child) {
-      return child.type === GraphiQL.Toolbar;
+      return child.type === Graphiql.Toolbar;
     });
     var footer = _graphqlJsutilsFind2['default'](children, function (child) {
-      return child.type === GraphiQL.Footer;
+      return child.type === Graphiql.Footer;
     });
 
     var queryWrapStyle = {
@@ -1597,15 +1597,15 @@ var GraphiQL = (function (_React$Component) {
 
   // Private methods
 
-  GraphiQL.prototype._storageGet = function _storageGet(name) {
+  Graphiql.prototype._storageGet = function _storageGet(name) {
     return this._storage.getItem('graphiql:' + name);
   };
 
-  GraphiQL.prototype._storageSet = function _storageSet(name, value) {
+  Graphiql.prototype._storageSet = function _storageSet(name, value) {
     this._storage.setItem('graphiql:' + name, value);
   };
 
-  GraphiQL.prototype._fetchQuery = function _fetchQuery(query, variables, cb) {
+  Graphiql.prototype._fetchQuery = function _fetchQuery(query, variables, cb) {
     var _this3 = this;
 
     this.props.fetcher({ query: query, variables: variables }).then(cb)['catch'](function (error) {
@@ -1616,7 +1616,7 @@ var GraphiQL = (function (_React$Component) {
     });
   };
 
-  GraphiQL.prototype._didClickDragBar = function _didClickDragBar(event) {
+  Graphiql.prototype._didClickDragBar = function _didClickDragBar(event) {
     // Only for primary unmodified clicks
     if (event.button !== 0 || event.ctrlKey) {
       return false;
@@ -1637,20 +1637,20 @@ var GraphiQL = (function (_React$Component) {
     return false;
   };
 
-  return GraphiQL;
+  return Graphiql;
 })(_react2['default'].Component);
 
-exports.GraphiQL = GraphiQL;
-GraphiQL.Logo = (function (_React$Component2) {
-  _inherits(GraphiQLLogo, _React$Component2);
+exports.Graphiql = Graphiql;
+Graphiql.Logo = (function (_React$Component2) {
+  _inherits(GraphiqlLogo, _React$Component2);
 
-  function GraphiQLLogo() {
-    _classCallCheck(this, GraphiQLLogo);
+  function GraphiqlLogo() {
+    _classCallCheck(this, GraphiqlLogo);
 
     _React$Component2.apply(this, arguments);
   }
 
-  GraphiQLLogo.prototype.render = function render() {
+  GraphiqlLogo.prototype.render = function render() {
     return _react2['default'].createElement(
       'div',
       { className: 'title' },
@@ -1668,20 +1668,20 @@ GraphiQL.Logo = (function (_React$Component2) {
     );
   };
 
-  return GraphiQLLogo;
+  return GraphiqlLogo;
 })(_react2['default'].Component);
 
-// Configure the UI by providing this Component as a child of GraphiQL.
-GraphiQL.Toolbar = (function (_React$Component3) {
-  _inherits(GraphiQLToolbar, _React$Component3);
+// Configure the UI by providing this Component as a child of Graphiql.
+Graphiql.Toolbar = (function (_React$Component3) {
+  _inherits(GraphiqlToolbar, _React$Component3);
 
-  function GraphiQLToolbar() {
-    _classCallCheck(this, GraphiQLToolbar);
+  function GraphiqlToolbar() {
+    _classCallCheck(this, GraphiqlToolbar);
 
     _React$Component3.apply(this, arguments);
   }
 
-  GraphiQLToolbar.prototype.render = function render() {
+  GraphiqlToolbar.prototype.render = function render() {
     return _react2['default'].createElement(
       'div',
       { className: 'toolbar' },
@@ -1689,20 +1689,20 @@ GraphiQL.Toolbar = (function (_React$Component3) {
     );
   };
 
-  return GraphiQLToolbar;
+  return GraphiqlToolbar;
 })(_react2['default'].Component);
 
-// Configure the UI by providing this Component as a child of GraphiQL.
-GraphiQL.Footer = (function (_React$Component4) {
-  _inherits(GraphiQLFooter, _React$Component4);
+// Configure the UI by providing this Component as a child of Graphiql.
+Graphiql.Footer = (function (_React$Component4) {
+  _inherits(GraphiqlFooter, _React$Component4);
 
-  function GraphiQLFooter() {
-    _classCallCheck(this, GraphiQLFooter);
+  function GraphiqlFooter() {
+    _classCallCheck(this, GraphiqlFooter);
 
     _React$Component4.apply(this, arguments);
   }
 
-  GraphiQLFooter.prototype.render = function render() {
+  GraphiqlFooter.prototype.render = function render() {
     return _react2['default'].createElement(
       'div',
       { className: 'footer' },
@@ -1710,10 +1710,10 @@ GraphiQL.Footer = (function (_React$Component4) {
     );
   };
 
-  return GraphiQLFooter;
+  return GraphiqlFooter;
 })(_react2['default'].Component);
 
-var defaultQuery = '# Welcome to GraphiQL\n#\n# GraphiQL is an in-browser IDE for writing, validating, and\n# testing GraphQL queries.\n#\n# Type queries into this side of the screen, and you will\n# see intelligent typeaheads aware of the current GraphQL type schema and\n# live syntax and validation errors highlighted within the text.\n#\n# To bring up the auto-complete at any point, just press Ctrl-Space.\n#\n# Press the run button above, or Cmd-Enter to execute the query, and the result\n# will appear in the pane to the right.\n\n';
+var defaultQuery = '# Welcome to Graphiql\n#\n# Graphiql is an in-browser IDE for writing, validating, and\n# testing GraphQL queries.\n#\n# Type queries into this side of the screen, and you will\n# see intelligent typeaheads aware of the current GraphQL type schema and\n# live syntax and validation errors highlighted within the text.\n#\n# To bring up the auto-complete at any point, just press Ctrl-Space.\n#\n# Press the run button above, or Cmd-Enter to execute the query, and the result\n# will appear in the pane to the right.\n\n';
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../utility/elementPosition":10,"../utility/fillLeafs":11,"../utility/introspectionQueries":12,"./DocExplorer":3,"./ExecuteButton":4,"./QueryEditor":6,"./ResultViewer":7,"./VariableEditor":8,"graphql/jsutils/find":121,"graphql/type":136,"graphql/utilities":145}],6:[function(require,module,exports){
 (function (global){
@@ -2295,8 +2295,8 @@ exports.VariableEditor = VariableEditor;
 // The primary React component to use.
 'use strict';
 
-module.exports = require('./components/GraphiQL').GraphiQL;
-},{"./components/GraphiQL":5}],10:[function(require,module,exports){
+module.exports = require('./components/Graphiql').Graphiql;
+},{"./components/Graphiql":5}],10:[function(require,module,exports){
 /**
  *  Copyright (c) 2015, Facebook, Inc.
  *  All rights reserved.

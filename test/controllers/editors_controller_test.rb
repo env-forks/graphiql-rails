@@ -1,34 +1,34 @@
 require "test_helper"
 
-puts GraphiQL::Rails.constants
+puts Graphiql::Rails.constants
 
-module GraphiQL
+module Graphiql
   module Rails
     class EditorsControllerTest < ActionController::TestCase
       setup do
-        @routes = GraphiQL::Rails::Engine.routes
+        @routes = Graphiql::Rails::Engine.routes
       end
 
       teardown do
-        GraphiQL::Rails.config.query_params = false
-        GraphiQL::Rails.config.initial_query = GraphiQL::Rails::WELCOME_MESSAGE
+        Graphiql::Rails.config.query_params = false
+        Graphiql::Rails.config.initial_query = Graphiql::Rails::WELCOME_MESSAGE
       end
 
-      test "renders GraphiQL" do
+      test "renders Graphiql" do
         get :show, graphql_path: "/my/endpoint"
         assert_response(:success)
-        assert_includes(@response.body, "React.createElement(GraphiQL", "it renders GraphiQL")
+        assert_includes(@response.body, "React.createElement(Graphiql", "it renders Graphiql")
         assert_includes(@response.body, "my/endpoint", "it uses the provided path")
         assert_match(/application-\w+\.js/, @response.body, "it includes assets")
       end
 
       test "it uses initial_query config" do
         get :show, graphql_path: "/my/endpoint"
-        assert_includes(@response.body, "Welcome to GraphiQL")
+        assert_includes(@response.body, "Welcome to Graphiql")
 
-        GraphiQL::Rails.config.initial_query = "{ customQuery }"
+        Graphiql::Rails.config.initial_query = "{ customQuery }"
         get :show, graphql_path: "/my/endpoint"
-        refute_includes(@response.body, "Welcome to GraphiQL")
+        refute_includes(@response.body, "Welcome to Graphiql")
         assert_includes(@response.body, "{ customQuery }")
       end
 
@@ -36,7 +36,7 @@ module GraphiQL
         get :show, graphql_path: "/my/endpoint"
         refute_includes(@response.body, "onEditQuery")
 
-        GraphiQL::Rails.config.query_params = true
+        Graphiql::Rails.config.query_params = true
         get :show, graphql_path: "/my/endpoint"
         assert_includes(@response.body, "onEditQuery")
       end

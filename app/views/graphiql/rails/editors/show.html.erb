@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GraphiQL</title>
+    <title>Graphiql</title>
     <%= stylesheet_link_tag("graphiql/rails/application") %>
     <%= javascript_include_tag("graphiql/rails/application") %>
-    <% if GraphiQL::Rails.config.csrf %>
+    <% if Graphiql::Rails.config.csrf %>
     <%= csrf_meta_tags %>
     <% end %>
   </head>
@@ -14,10 +14,10 @@
     </div>
     <script>
     var parameters = {
-      query: "<%= GraphiQL::Rails.config.initial_query.gsub(/\n/, "\\n") %>"
+      query: "<%= Graphiql::Rails.config.initial_query.gsub(/\n/, "\\n") %>"
     };
 
-    <% if GraphiQL::Rails.config.query_params %>
+    <% if Graphiql::Rails.config.query_params %>
     // Parse the search string to get url parameters.
     var search = window.location.search;
     search.substr(1).split('&').forEach(function (entry) {
@@ -63,7 +63,7 @@
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         headers: { 'Content-Type': 'application/json',
-        <% if GraphiQL::Rails.config.csrf %>
+        <% if Graphiql::Rails.config.csrf %>
          'X-CSRF-Token': document.getElementsByName("csrf-token")[0].content
         <% end %>
        },
@@ -74,12 +74,12 @@
       });
     }
 
-    // Render <GraphiQL /> into the body.
+    // Render <Graphiql /> into the body.
     ReactDOM.render(
-      React.createElement(GraphiQL, {
+      React.createElement(Graphiql, {
         fetcher: graphQLFetcher,
         query: parameters.query,
-        <% if GraphiQL::Rails.config.query_params %>
+        <% if Graphiql::Rails.config.query_params %>
         variables: parameters.variables,
         onEditQuery: onEditQuery,
         onEditVariables: onEditVariables

@@ -1,7 +1,7 @@
-module GraphiQL
+module Graphiql
   module Rails
     class Engine < ::Rails::Engine
-      isolate_namespace GraphiQL::Rails
+      isolate_namespace Graphiql::Rails
     end
   end
 end
